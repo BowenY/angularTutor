@@ -1,33 +1,106 @@
-<h4 style="color: Gold">All U Can Try Luck Chinese Cuisine. </h4>
-<small style="color: gray">Good luck!</small>
 
-<hr>
-<h4>This is a counter</h4>
-<p> {{ counter }} </p>
-<button class="btn btn-primary" (click)="counterPlus()" style="margin-right: 10px"> Add One</button>
-<button class="btn btn-primary" (click)="resetCounter()"> Reset Counter</button>
+<h1 style="color: Gold; text-align: center;">All U Can Try Luck Chinese Cuisine</h1>
 
-<hr>
-<h4>This is a input Box with Two Way Data Binding</h4>
-<div>
-  <span>User Name: </span>
-  <input type="text" [(ngModel)]="userName">
+<div class="text-center">
+  <img src="https://china-sichuan.ie/wp-content/uploads/ZodiacDragon.jpg" class="rounded" style="width: 200px; height: 200px;">
 </div>
 
-<div>
-  <span>Password: </span>
-  <input type="password">
+
+<div class="text-center">
+  <h3 style="color: gold">Choose 3 - 4 items from below. Veggies are not recommended.</h3>
 </div>
-<div *ngIf="isLogin" class="informBoxBoarder"> You Loggedin as {{ userName }} </div>
-<button class="btn btn-light" (click)="login()" style="margin-right: 10px"> Login </button>
-<button class="btn btn-light" (click)="signOut()"> Sign Out </button>
 
-<hr>
-<h4>This is a StudentList managed by ngfor loop</h4>
-<div *ngFor="let student of students">
-  <div style="margin-bottom: 2px;border-left: solid 2px; border-right: solid 2px; border-bottom: solid 2px; border-top: solid 2px; display: flex; justify-content: space-between">
-    <div><span style="color: cornflowerblue; margin-right: 5px">Student Name: </span> <span> {{ student.name }}</span></div>
 
-    <div><span style="color: cornflowerblue; margin-right: 5px;">Student Major: </span> <span>{{ student.major }}</span></div>
+<ul style="position: relative; left: 45%; right: 45%">
+  <div class="form-check form-control-lg">
+    <input class="form-check-input" type="checkbox" value="" id="chicken" [(ngModel)] = "chicken">
+    <label class="form-check-label" for="defaultCheck1">
+      Chicken
+    </label>
+  </div>
+
+  <div class="form-check form-control-lg">
+    <input class="form-check-input" type="checkbox" value="" id="beef" [(ngModel)] = "beef">
+    <label class="form-check-label" for="defaultCheck1">
+      Beef
+    </label>
+  </div>
+
+  <div class="form-check form-control-lg">
+    <input class="form-check-input" type="checkbox" value="" id="shrimp" [(ngModel)] = "shrimp">
+    <label class="form-check-label" for="defaultCheck1">
+      Shrimp
+    </label>
+  </div>
+
+
+  <div class="form-check form-control-lg">
+    <input class="form-check-input" type="checkbox" value="" id="fish" [(ngModel)] = "fish">
+    <label class="form-check-label" for="defaultCheck1">
+      Fish fillet
+    </label>
+  </div>
+
+
+  <div class="form-check form-control-lg">
+    <input class="form-check-input" type="checkbox" value="" id="rice" [(ngModel)] = "rice">
+    <label class="form-check-label" for="defaultCheck1">
+      Rice
+    </label>
+  </div>
+
+  <div class="form-check form-control-lg">
+    <input class="form-check-input" type="checkbox" value="" id="noodle" [(ngModel)] = "noodle">
+    <label class="form-check-label" for="defaultCheck1">
+      Noodle
+    </label>
+  </div>
+
+  <div class="form-check form-control-lg">
+    <input class="form-check-input" type="checkbox" value="" id="veggie" [(ngModel)] = "veggie">
+    <label class="form-check-label" for="defaultCheck1">
+      Random veggies you may not need trust me
+    </label>
+  </div>
+
+</ul>
+
+<div class="text-center">
+  <button type="button" class="btn btn-warning" (click)="submitOrder()" style="margin-right: 10px">Submit</button>
+  <button type="button" class="btn btn-dark" (click)="clearOrder()">Clear</button>
+
+  <hr>
+  <h4>This is what you got</h4>
+
+  <div style="position: relative; border: gold solid 3px; left: 40%; right 40%; width: 20%">
+    <div *ngIf="isSub">
+      <div *ngIf="isValid">
+        <div *ngFor="let food of foodRst">
+          <div>
+            <div>{{ food }}</div>
+          </div>
+        </div>
+
+        <div>
+          This dish name is: {{ dishName }}
+        </div>
+      </div>
+
+      <div *ngIf="isOORange">
+        Oh my friend, I said choose 3-4 items. You can do better.
+      </div>
+
+      <div *ngIf="isInRange">
+        <div *ngIf="isOOMenu">
+          Oh my friend, it's our fault. We will try this combination later.
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="isClr">
+      Waiting for order.
+    </div>
   </div>
 </div>
+
